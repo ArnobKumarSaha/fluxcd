@@ -1,0 +1,63 @@
+Resource: [0;32m configmaps [0m
+NAME               DATA   AGE
+kube-root-ca.crt   1      11m
+Resource: [0;32m deployments.apps [0m
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+helm-controller           1/1     1            1           11m
+kustomize-controller      1/1     1            1           11m
+notification-controller   1/1     1            1           11m
+source-controller         1/1     1            1           11m
+Resource: [0;32m endpoints [0m
+NAME                      ENDPOINTS          AGE
+notification-controller   10.244.0.10:9090   11m
+source-controller         10.244.0.12:9090   11m
+webhook-receiver          10.244.0.10:9292   11m
+Resource: [0;32m endpointslices.discovery.k8s.io [0m
+NAME                            ADDRESSTYPE   PORTS   ENDPOINTS     AGE
+notification-controller-vwqbs   IPv4          9090    10.244.0.10   11m
+source-controller-mxjpd         IPv4          9090    10.244.0.12   11m
+webhook-receiver-pmp4c          IPv4          9292    10.244.0.10   11m
+Resource: [0;32m gitrepositories.source.toolkit.fluxcd.io [0m
+NAME          URL                                          AGE   READY   STATUS
+flux-system   ssh://git@github.com/Arnobkumarsaha/fluxcd   11m   True    stored artifact for revision 'master@sha1:0ae0e009286a3f5b87f3840117d73e9b86c8aff2'
+Resource: [0;32m kustomizations.kustomize.toolkit.fluxcd.io [0m
+NAME          AGE   READY   STATUS
+flux-system   11m   True    Applied revision: master@sha1:0ae0e009286a3f5b87f3840117d73e9b86c8aff2
+Resource: [0;32m leases.coordination.k8s.io [0m
+NAME                                      HOLDER                                                                          AGE
+helm-controller-leader-election           helm-controller-644cc6fdfb-xjqmb_d7e41ffb-a06d-42c1-bd3e-0135e47f664b           11m
+kustomize-controller-leader-election      kustomize-controller-7f65556bf5-ngrzr_47d53dff-0de8-408d-ad3c-5d809801c4d3      11m
+notification-controller-leader-election   notification-controller-57fb4fcb68-fplvd_74b1d6dc-72d2-46f0-a6cb-8bde6b9c8be8   11m
+source-controller-leader-election         source-controller-7c8f5fbf68-hx6p4_57e4cb02-4481-4fac-9cd2-66dc3566418e         10m
+Resource: [0;32m networkpolicies.networking.k8s.io [0m
+NAME             POD-SELECTOR                  AGE
+allow-egress     <none>                        11m
+allow-scraping   <none>                        11m
+allow-webhooks   app=notification-controller   11m
+Resource: [0;32m pods [0m
+NAME                                       READY   STATUS    RESTARTS   AGE
+helm-controller-644cc6fdfb-xjqmb           1/1     Running   0          11m
+kustomize-controller-7f65556bf5-ngrzr      1/1     Running   0          11m
+notification-controller-57fb4fcb68-fplvd   1/1     Running   0          11m
+source-controller-7c8f5fbf68-hx6p4         1/1     Running   0          11m
+Resource: [0;32m replicasets.apps [0m
+NAME                                 DESIRED   CURRENT   READY   AGE
+helm-controller-644cc6fdfb           1         1         1       11m
+kustomize-controller-7f65556bf5      1         1         1       11m
+notification-controller-57fb4fcb68   1         1         1       11m
+source-controller-7c8f5fbf68         1         1         1       11m
+Resource: [0;32m secrets [0m
+NAME          TYPE     DATA   AGE
+flux-system   Opaque   3      11m
+Resource: [0;32m serviceaccounts [0m
+NAME                      SECRETS   AGE
+default                   0         11m
+helm-controller           0         11m
+kustomize-controller      0         11m
+notification-controller   0         11m
+source-controller         0         11m
+Resource: [0;32m services [0m
+NAME                      TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+notification-controller   ClusterIP   10.96.39.21    <none>        80/TCP    11m
+source-controller         ClusterIP   10.96.19.193   <none>        80/TCP    11m
+webhook-receiver          ClusterIP   10.96.83.12    <none>        80/TCP    11m
